@@ -154,7 +154,14 @@ family_tree = arthur
 Enter your solution below.
 
 ```elixir
-
+opa = %{name: "Opa", age: 71, status: "grandparent"}
+nana = %{name: "Nana", age: 58, status: "grandparent"}
+grandaddy = %{name: "Papaw", age: 70, status: "grandparent"}
+grandmama = %{name: "Meemaw", age: 72, status: "grandparent"}
+papa = %{name: "Daddy", age: 47, status: "parent", parents: [grandaddy, grandmama]}
+mama = %{name: "Momma", age: 46, status: "parent", parents: [opa, nana]}
+daughter = %{name: "Girlie", age: 22, status: "child", parents: [mama, papa]}
+family_tree_map = daughter
 ```
 
 ## Commit Your Progress

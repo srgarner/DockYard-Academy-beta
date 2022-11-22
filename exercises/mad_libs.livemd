@@ -38,7 +38,11 @@ blank3 = "code"
 Enter your solution below.
 
 ```elixir
+b1 = "man"
+b2 = "ideas"
+b3 = "code"
 
+"A programmer is a #{b1} that turns #{b2} into #{b3}."
 ```
 
 ## String Interpolation Madlib
@@ -63,7 +67,7 @@ blank3 = "foobar"
 Enter your solution below.
 
 ```elixir
-
+b1 =
 ```
 
 ## Commit Your Progress

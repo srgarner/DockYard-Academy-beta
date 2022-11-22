@@ -111,7 +111,14 @@ end
 Enter your solution below.
 
 ```elixir
+temp = Enum.random(0..20)
+IO.puts(temp)
 
+if temp > 10 do
+  :hot
+else
+  :cold
+end
 ```
 
 ## Clear Control Flow
@@ -356,7 +363,7 @@ end
 Return each result from `1` to `5` by changing the `condition` variable below.
 
 ```elixir
-condition = nil
+condition = {1, "two", %{key: [1, "dos", "tres"]}}
 
 case condition do
   [1, 2, 3] -> 1
@@ -397,7 +404,8 @@ Here's how we can translate this into a program using `cond`.
 
 ```elixir
 # Change temperature to change the condition triggered.
-temperature = 6
+temperature = Enum.random(-20..50)
+IO.puts(temperature)
 
 cond do
   temperature >= 21 -> "t-shirt"
@@ -495,7 +503,15 @@ end
 </details>
 
 ```elixir
+grade = Enum.random(1..100)
+IO.puts(grade)
 
+cond do
+  grade >= 85 -> "A"
+  grade >= 70 -> "B"
+  grade >= 55 -> "C"
+  grade < 55 -> "D"
+end
 ```
 
 ## Unless
@@ -549,7 +565,12 @@ In the Elixir cell below
 * Create an `unless` statement. which returns `"awake"` unless `tired`.
 
 ```elixir
+tired = false
+IO.puts("You tired yet? #{tired}.")
 
+unless tired do
+  "awake"
+end
 ```
 
 ## Commit Your Progress

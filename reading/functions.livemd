@@ -276,7 +276,9 @@ is_even? = fn int -> rem(int, 2) == 0 end
 Enter your solution below.
 
 ```elixir
-
+rand_num = Enum.random(1..20)
+is_even? = fn int -> rem(int, 2) == 0 end
+result = "#{rand_num} is even? #{is_even?.(rand_num)}."
 ```
 
 ## Multi-Parameter Functions
@@ -342,7 +344,8 @@ calculate_force = fn mass, acceleration -> mass * acceleration end
 Enter your solution below.
 
 ```elixir
-
+calculate_force = fn mass, acceleration -> mass * acceleration end
+calculate_force.(2, 4)
 ```
 
 ## Shorthand Syntax
@@ -391,7 +394,8 @@ subtract = &(&1 - &2)
 Enter your solution below.
 
 ```elixir
-
+subtract = &(&1 - &2)
+subtract.(20, 25)
 ```
 
 ### Your Turn
@@ -417,7 +421,8 @@ multiply_three = &(&1 * &2 * &3)
 Enter your solution below.
 
 ```elixir
-
+multiply_three = &(&1 * &2 * &3)
+multiply_three.(2, 5, 3)
 ```
 
 ## First-class Functions
@@ -506,6 +511,9 @@ Enter your solution below.
 
 ```elixir
 call_with_20 = nil
+add = &(&1 + &2)
+call_with_10_and_20 = fn callback -> callback.(10, 20) end
+call_with_10_and_20.(add)
 ```
 
 ## Pipe Operator
@@ -618,7 +626,12 @@ multiply = fn int1, int2 -> int1 * int2 end
 Enter your solution below.
 
 ```elixir
+add = fn a, b -> a + b end
+subtract = fn a, b -> a - b end
+multiply = fn a, b -> a * b end
+val = 10
 
+val |> add.(2) |> multiply.(5) |> subtract.(4)
 ```
 
 ## Commit Your Progress

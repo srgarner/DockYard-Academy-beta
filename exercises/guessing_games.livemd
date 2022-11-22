@@ -33,7 +33,9 @@ Ensure your solutions works for both an incorrect and correct player guess.
 Enter your solution below.
 
 ```elixir
-
+guess = "yo"
+answer = "yo"
+(guess == answer && "Correct") || "Incorrect"
 ```
 
 ## Bonus: Guess the Random Word
@@ -41,7 +43,7 @@ Enter your solution below.
 We can use [Enum.random/1](https://hexdocs.pm/elixir/Enum.html#random/1) to pick a random value from a list.
 
 ```elixir
-Enum.random(["hello", "hi", "howdy"])
+Enum.random(["yo", "hey", "sup"])
 ```
 
 Armed with this knowledge, you're going to create a word guessing game.
@@ -65,7 +67,10 @@ Armed with this knowledge, you're going to create a word guessing game.
 Enter your solution below.
 
 ```elixir
+guess = Enum.random(["Cheese", "Bun"])
+answer = Enum.random(["Bun", "Patty", "Cheese"])
 
+(guess == answer && "Correct") || "Incorrect"
 ```
 
 ## Bonus: Guess the Number
@@ -117,7 +122,14 @@ Now let's build a number guessing game
 Enter your solution below.
 
 ```elixir
+answer = Enum.random(1..3)
+guess = 3
 
+cond do
+  guess == answer -> "Correct!"
+  guess < answer -> "Too low."
+  guess > answer -> "Too high."
+end
 ```
 
 ## Commit Your Progress

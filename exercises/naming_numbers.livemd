@@ -70,7 +70,23 @@ naming_numbers.(1)
 Enter your solution below.
 
 ```elixir
+naming_numbers = fn integer ->
+  case integer do
+    0 -> "sefr"
+    1 -> "wahed"
+    2 -> "etneen"
+    3 -> "thalaatha"
+    4 -> "arba3a"
+    5 -> "khamsa"
+    6 -> "setta"
+    7 -> "sab3a"
+    8 -> "tamanya"
+    9 -> "tes3a"
+    10 -> "3ashra"
+  end
+end
 
+naming_numbers.(4)
 ```
 
 ## Numbering Names

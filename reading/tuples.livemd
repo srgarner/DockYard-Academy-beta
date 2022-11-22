@@ -59,7 +59,7 @@ the second element.
 </details>
 
 ```elixir
-
+{:ok, "got it!"}
 ```
 
 ## Pattern Matching
@@ -139,7 +139,8 @@ jewel
 </details>
 
 ```elixir
-{"gold", "treasure", "jewel"}
+{_gold, _treasure, jewel} = {"gold", "treasure", "jewel"}
+IO.puts(jewel)
 ```
 
 ## Further Reading

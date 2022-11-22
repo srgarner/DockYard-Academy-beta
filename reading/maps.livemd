@@ -79,13 +79,14 @@ You can retrieve values in a map using **map.key** notation like so. This only w
 atom keys.
 
 ```elixir
-%{key: "value"}.key
+%{doodoo: "value", peepee: "worth"}.peepee
 ```
 
 Alternatively, you can access the map value using square bracket notation **map[key]**.
 
 ```elixir
-%{key: "value"}[:key]
+mappo = %{key: "value"}
+mappo[:key]
 ```
 
 Bracket notation is especially useful for maps with non-atom keys.
@@ -131,8 +132,8 @@ You can accomplish all of the same behavior above by binding the map to a variab
 than accessing values from the map directly.
 
 ```elixir
-map = %{key: "value"}
-map.key
+mappo = %{crappo: "value"}
+mappo.crappo
 ```
 
 ```elixir
@@ -165,6 +166,7 @@ map[:hello]
 
 ```elixir
 map = %{hello: "world"}
+map.hello
 ```
 
 ### Updating Maps
@@ -225,7 +227,8 @@ todo = %{title: "finish maps exercise", completed: false}
 </details>
 
 ```elixir
-
+todo = %{title: "finish maps exercises", completed: false}
+%{todo | completed: true}
 ```
 
 ## Pattern Matching
@@ -304,7 +307,8 @@ Bind `2` and `4` in the following map to variables `two` and `four`.
 Enter your solution below.
 
 ```elixir
-%{one: 1, two: 2, three: 3, four: 4}
+%{two: googlie, four: mooglie} = %{one: 1, two: 2, three: 3, four: 4}
+googlie + mooglie
 ```
 
 ## Further Reading

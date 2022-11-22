@@ -62,21 +62,22 @@ maze.south.west.south.east.south.east.south
 </details>
 
 ```elixir
-maze = %{
-  south: %{
-    west: %{
-      south: %{
-        east: %{
-          south: %{
-            east: %{
-              south: "Exit!"
+maze =
+  %{
+    south: %{
+      west: %{
+        south: %{
+          east: %{
+            south: %{
+              east: %{
+                south: "Exit!"
+              }
             }
           }
         }
       }
     }
-  }
-}
+  }.south.west.south.east.south.east.south
 ```
 
 ## The String Maze
@@ -119,16 +120,23 @@ maze["south"]["east"]["south"]["west"]["south"]["west"]["south"]["east"]["south"
 </details>
 
 ```elixir
-maze = %{
-  "south" => %{
-    "east" => %{
-      "south" => %{
-        "west" => %{
-          "south" => %{
-            "west" => %{
-              "south" => %{
-                "east" => %{
-                  "south" => "Exit!"
+north = "north"
+south = "south"
+east = "east"
+west = "west"
+
+maze =
+  %{
+    "south" => %{
+      "east" => %{
+        "south" => %{
+          "west" => %{
+            "south" => %{
+              "west" => %{
+                "south" => %{
+                  "east" => %{
+                    "south" => "Exit!"
+                  }
                 }
               }
             }
@@ -136,8 +144,7 @@ maze = %{
         }
       }
     }
-  }
-}
+  }[south][east][south][west][south][west][south][east][south]
 ```
 
 ## Bonus: Treasure Map
@@ -170,19 +177,20 @@ treasure_map["south ten paces"][10][:"east three paces"][[1, 2, 3]][{"turn", "ri
 </details>
 
 ```elixir
-treasure_map = %{
-  "south ten paces" => %{
-    10 => %{
-      :"east three paces" => %{
-        [1, 2, 3] => %{
-          {"turn", "right"} => %{
-            :dig => "gold"
+treasure_map =
+  %{
+    "south ten paces" => %{
+      10 => %{
+        :"east three paces" => %{
+          [1, 2, 3] => %{
+            {"turn", "right"} => %{
+              :dig => "gold"
+            }
           }
         }
       }
     }
-  }
-}
+  }["south ten paces"][10][:"east three paces"][[1, 2, 3]][{"turn", "right"}][:dig]
 ```
 
 ### (Extra Bonus) Update the Treasure Map
@@ -240,7 +248,7 @@ put_in(
 Enter your solution below.
 
 ```elixir
-treasure_map = %{
+old_map = %{
   "south ten paces" => %{
     10 => %{
       :"east three paces" => %{
@@ -253,6 +261,8 @@ treasure_map = %{
     }
   }
 }
+
+treasure+map = 
 ```
 
 ## Bonus: Pattern Matching

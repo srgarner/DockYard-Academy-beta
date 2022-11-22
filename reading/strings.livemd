@@ -97,7 +97,7 @@ Replace `nil` with your answer.
 </details>
 
 ```elixir
-
+"Hi" <> " Peter"
 ```
 
 ### String Interpolation

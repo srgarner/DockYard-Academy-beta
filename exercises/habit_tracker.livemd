@@ -51,7 +51,9 @@ small = 5
 Enter your solution below.
 
 ```elixir
-
+large = 30
+med = 20
+small = 5
 ```
 
 ## Small, Medium, Large
@@ -81,7 +83,7 @@ small + medium + large
 Enter your answer in the code cell below.
 
 ```elixir
-
+IO.puts(large + med + small)
 ```
 
 ## Multiples
@@ -100,7 +102,7 @@ small * 10 + medium * 5 + large * 3
 Enter your answer below.
 
 ```elixir
-
+IO.puts(large * 3 + med * 5 + small * 10)
 ```
 
 ## Progress Bar
@@ -131,7 +133,8 @@ points / goal
 Enter your answer below.
 
 ```elixir
-
+goal = 40
+IO.puts((med + small) / goal * 100)
 ```
 
 ## Penalties and Rewards
@@ -158,7 +161,10 @@ small * 1.6 * 3 + medium * 2 + large * 2 * 0.5
 Enter your answer below.
 
 ```elixir
-
+early = small * 3 * 1.6
+late = large * 2 * 0.5
+normal = med * 2
+total = early + late + normal
 ```
 
 ## Bonus: Add Your Own Feature
@@ -167,7 +173,23 @@ Add your own feature to the habit tracking app. Use comments to describe your fe
 how it would affect calculating the total score and/or the total percentage of completed habits.
 
 ```elixir
+# Streak Counter Feature - (UNDER DEVELOPMENT)
+# compare yesterday to today, if both have a session logged,
+# then +=1 to streak_count
+# else if yesterday = false and today = true
+# streak_count = 0
 
+streak_count = 0
+today = Date.utc_today()
+yesterday = today |> Date.add(-1)
+
+if yesterday && today do
+  streak_count |> streak_count.add(1)
+else
+  streak_count = 0
+end
+
+IO.evaluate(streak_count)
 ```
 
 ## Commit Your Progress

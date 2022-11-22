@@ -70,7 +70,7 @@ You can create multiple functions in a module.
 Here's a new `hi/1` function that says hi to a person.
 
 ```elixir
-defmodule Greeter do
+defmodule Greetor do
   def hello do
     "Hello"
   end
@@ -84,7 +84,7 @@ end
 You call the named function in the module by passing it an argument.
 
 ```elixir
-Greeter.hi("Peter Parker")
+Greetor.hi("Peter Parker")
 ```
 
 ### Your Turn
@@ -105,7 +105,11 @@ end
 </details>
 
 ```elixir
-
+defmodule Math do
+  def add(num1, num2) do
+    num1 + num2
+  end
+end
 ```
 
 ## Internal Module Functions
@@ -129,7 +133,7 @@ InspectorGadget.necktie()
 The module can omit the module name when calling an internal function. Below, we call `gogo/1` instead of `InspectorGadget.gogo/1`
 
 ```elixir
-defmodule InspectorGadget do
+defmodule InspectorGidget do
   def gogo(gadget) do
     "Go go gadget #{gadget}!"
   end
@@ -137,9 +141,13 @@ defmodule InspectorGadget do
   def necktie do
     gogo("necktie")
   end
+
+  def arms do
+    gogo("arms")
+  end
 end
 
-InspectorGadget.necktie()
+InspectorGidget.arms()
 ```
 
 However, we must include the module name when using the module's function outside of the module. For example, the following will raise an error.
@@ -201,19 +209,19 @@ Often it communicates to other developers how to use your module.
 You can create a private module function with `defp` instead of `def`. You'll notice that below the `Speaker.think/0` function is undefined to the outside world.
 
 ```elixir
-defmodule Speaker do
+defmodule Speaker2 do
   defp think() do
     "hi there"
   end
 end
 
-Speaker.think()
+Speaker2.think()
 ```
 
 We use private functions internally in the module, which means that public functions could expose their values.
 
 ```elixir
-defmodule Speaker do
+defmodule Speaker3 do
   defp think() do
     "hi there"
   end
@@ -223,7 +231,7 @@ defmodule Speaker do
   end
 end
 
-Speaker.speak()
+Speaker3.speak()
 ```
 
 ## Callback Functions
@@ -337,7 +345,13 @@ end
 Enter your solution below.
 
 ```elixir
+defmodule Languages.Arabic do
+  def greeting do
+    "Ahhlan"
+  end
+end
 
+Languages.Arabic.greeting()
 ```
 
 ### Nested Modules
@@ -388,7 +402,7 @@ defmodule Hero do
   end
 
   def defeat do
-    "I #{@name} will defeat you #{@nemesis}!"
+    "I, #{@name}, will defeat you #{@nemesis}!"
   end
 end
 ```
@@ -441,9 +455,9 @@ Notice how the following example has an error because we cannot access the varia
 ```elixir
 top_level_scope = 1
 
-defmodule MyModule do
+defmodule MyModule3 do
   def my_function do
-    top_level_scope
+    top_level_scope()
   end
 end
 ```
@@ -451,11 +465,11 @@ end
 The same is true for the module scope.
 
 ```elixir
-defmodule MyModule do
+defmodule MyModule4 do
   module_scope = 2
 
   def my_function do
-    module_scope
+    module_scope()
   end
 end
 ```
@@ -465,14 +479,14 @@ We've already seen we can share a value between functions in a module using modu
 ```elixir
 name = "Jon"
 
-defmodule Greeter do
+defmodule Greeter3 do
   @name name
   def hello do
     "Hello #{@name}!"
   end
 end
 
-Greeter.hello()
+Greeter3.hello()
 ```
 
 ## Multiple Function Clauses
@@ -480,7 +494,7 @@ Greeter.hello()
 Elixir allows us to define multiple functions with the same name but that expect different parameters.
 
 ```elixir
-defmodule Greeter do
+defmodule Greeter5 do
   def hi(name1, name2) do
     "hi #{name1}, hi #{name2}"
   end
@@ -490,7 +504,7 @@ defmodule Greeter do
   end
 end
 
-Greeter.hi("Peter Parker", "Mary Jane")
+Greeter5.hi("Peter Parker", "Mary Jane")
 ```
 
 Each function clause has a different **arity**. We can treat each function with a different arity as a completely separate function.
@@ -529,7 +543,33 @@ end
 </details>
 
 ```elixir
+defmodule Mathe do
+  @moduledoc """
+  Perform custom arithmetic operations.
+  """
 
+  @doc """
+  Perform addition of 2 numbers.
+
+  ## Example
+  iex> Mathe.adde(1,2)
+  3
+  """
+  def adde(a, b) do
+    a + b
+  end
+
+  @doc """
+  Perform addition of 3 numbers.
+
+  ## Example
+  iex> Mathe.adde(1,2,3)
+  6
+  """
+  def adde(x, y, z) do
+    x + y + z
+  end
+end
 ```
 
 ## Default Arguments
@@ -550,38 +590,38 @@ Greeter.greet("Peter")
 Then if desired, you can override the default value.
 
 ```elixir
-defmodule Greeter do
+defmodule Greeter6 do
   def greet(name, greeting \\ "Hello") do
     "#{greeting} #{name}!"
   end
 end
 
-Greeter.greet("Peter", "Hi")
+Greeter6.greet("Peter", "Hi")
 ```
 
 Multiple parameters can have default values.
 
 ```elixir
-defmodule Greeter do
+defmodule Greeter7 do
   def greet(name \\ "Peter", greeting \\ "Hello") do
     "#{greeting} #{name}!"
   end
 end
 
-Greeter.greet()
+Greeter7.greet("Pooter")
 ```
 
 You can even have a default for the first of multiple parameters. Elixir
 is smart enough to handle that!
 
 ```elixir
-defmodule Greeter do
+defmodule Greeter8 do
   def greet(name \\ "Peter", greeting) do
     "#{greeting} #{name}!"
   end
 end
 
-Greeter.greet("HI")
+Greeter8.greet("HI")
 ```
 
 This sometimes results in some confusion with the function's arity, and the number of arguments passed into the function. For example, the `Greeter.greet/2` function above has an arity of `2`, despite only being called with fewer than two arguments.
@@ -593,7 +633,13 @@ This sometimes results in some confusion with the function's arity, and the numb
 In the Elixir cell below, define a module with a function that uses a default argument.
 
 ```elixir
+defmodule Hellos do
+  def southCentralLA(name \\ "Loc", greeting \\ "Who you") do
+    "#{greeting}, #{name}?!"
+  end
+end
 
+Hellos.southCentralLA()
 ```
 
 ## Documentation
@@ -603,7 +649,7 @@ We can document modules using `@doc` and `@moduledoc` module attributes with a m
 `@moduledoc` should describe the module at a high level. `@doc` should document a single function in the module.
 
 ```elixir
-defmodule Greeter do
+defmodule Greeter9 do
   @moduledoc """
   Greeter
 
@@ -631,7 +677,7 @@ Sometimes documentation will include examples of how the code should behave. Thi
 We use `iex>` to declare that the code example should be executable. This represents the [IEx Shell](./iex.livemd) which we will learn more about in a future lesson.
 
 ```elixir
-defmodule Greeter do
+defmodule Greeterx do
   @moduledoc """
   Greeter
 
@@ -643,7 +689,7 @@ defmodule Greeter do
 
   ## Examples
 
-    iex> Greeter.greet("Bill")
+    iex> Greeterx.greet("Bill")
     "Hello Bill!"
   """
   def greet(name) do
@@ -655,7 +701,7 @@ defmodule Greeter do
 
     ## Examples
 
-    iex> Greeter.greet("Bill", "Jon")
+    iex> Greeterx.greet("Bill", "Jon")
     "Hello Bill! Hello Jon!"
   """
   def greet(name1, name2) do
