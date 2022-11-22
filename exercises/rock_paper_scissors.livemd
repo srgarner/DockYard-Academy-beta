@@ -113,8 +113,7 @@ Enter your solution below.
 
 ```elixir
 p1_choice = :rock
-p2_choice = :rock
-IO.puts("P1 chose #{p1_choice}. P2 chose #{p2_choice}.")
+p2_choice = IO.puts("P1 chose #{p1_choice}. P2 chose #{p2_choice}.")
 
 case {p1_choice, p2_choice} do
   {:rock, :paper} -> "Player 2 wins!"

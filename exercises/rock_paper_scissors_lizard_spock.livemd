@@ -82,6 +82,15 @@ defmodule RockPaperScissorsLizardSpock do
     false
   """
   def beats?(guess1, guess2) do
+    case {guess1, guess2} do
+      {:rock, :lizard} -> true
+      {:spock, :scissors} -> true
+      {:scissors, :lizard} -> true
+      {:lizard, :paper} -> true
+      {:paper, :spock} -> true
+      {:spock, :rock} -> true
+      {_, _} -> false
+    end
   end
 
   @doc """
