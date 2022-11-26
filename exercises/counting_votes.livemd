@@ -78,6 +78,7 @@ defmodule Votes do
     0
   """
   def count(votes, vote) do
+    Enum.count()
   end
 end
 ```
