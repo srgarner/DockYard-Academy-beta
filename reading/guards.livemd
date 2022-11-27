@@ -64,13 +64,13 @@ Multiplier.double(1.3)
 While useful for demonstration, we should realistically use the `is_number/1` guard instead.
 
 ```elixir
-defmodule Multiplier do
+defmodule Multiplier1 do
   def double(value) when is_number(value) do
     value * 2
   end
 end
 
-Multiplier.double(1.3)
+Multiplier1.double(1.3)
 ```
 
 Guards must return `true` or `false` values and be pure input and output.
@@ -155,7 +155,7 @@ the `is_number/1` guard. Now the first function expects any type of input, so it
 execute instead of the `is_binary/1` version.
 
 ```elixir
-defmodule Multiplier do
+defmodule Multiplier0 do
   def double(num) do
     num * 2
   end
@@ -165,7 +165,7 @@ defmodule Multiplier do
   end
 end
 
-Multiplier.double("example")
+Multiplier0.double("example")
 ```
 
 You'll notice our program crashes with an error.
@@ -178,7 +178,7 @@ If you move the more generic function lower, then strings will match the
 `is_binary/1` version first and our `Multiplier.double/1` function works as expected.
 
 ```elixir
-defmodule Multiplier do
+defmodule Multipliery do
   def double(string) when is_binary(string) do
     string <> string
   end
@@ -188,15 +188,15 @@ defmodule Multiplier do
   end
 end
 
-Multiplier.double("example")
+Multipliery.double("example")
 ```
 
 ```elixir
-Multiplier.double(1)
+Multipliery.double(1)
 ```
 
 ```elixir
-Multiplier.double(2.5)
+Multipliery.double(2.5)
 ```
 
 ### Your Turn
@@ -225,9 +225,12 @@ end
 
 ```elixir
 defmodule Say do
-  def hello(name) do
+  def hello(name) when is_binary(name) do
+    "Hello, #{name}."
   end
 end
+
+Say.hello("Bogda")
 ```
 
 ### Your Turn
@@ -269,9 +272,12 @@ Enter your solution below.
 
 ```elixir
 defmodule Percent do
-  def display(percent) do
+  def display(percent) when is_number(percent) and percent > 0 and percent <= 100 do
+    "#{percent}%"
   end
 end
+
+Percent.display(0.22)
 ```
 
 ## Further Reading
