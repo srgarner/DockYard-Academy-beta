@@ -184,7 +184,11 @@ end)
 </details>
 
 ```elixir
+digits = Integer.digits(1_234_321)
 
+Enum.reduce(digits, %{}, fn integer, acc ->
+  Map.update(acc, integer, 1, fn current -> current + 1 end)
+end)
 ```
 
 ## Further Reading

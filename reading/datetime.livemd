@@ -204,7 +204,7 @@ DateTime.new!(Date.new!(2022, 4, 19), Time.new!(12, 0, 0))
 Enter your solution below.
 
 ```elixir
-
+DateTime.new(~D[1938-04-19], ~T[12:00:00], "Etc/UTC")
 ```
 
 If you solved the challenge above using sigils, complete it again using functions. If you solved the challenge using functions, then complete it again using sigils.
@@ -212,7 +212,7 @@ If you solved the challenge above using sigils, complete it again using function
 Enter your new solution below.
 
 ```elixir
-DateTime.new!(~D[1938-04-18])
+DateTime.new!(Date.new!(1938, 04, 19), Time.new!(12, 00, 00))
 ```
 
 Create a [DateTime](https://hexdocs.pm/elixir/DateTime.html) for today at the current time in universal time.
@@ -229,7 +229,7 @@ DateTime.utc_now()
 Enter your solution below.
 
 ```elixir
-
+ahora = DateTime.utc_now()
 ```
 
 Use [DateTime.add/4](https://hexdocs.pm/elixir/DateTime.html#add/4) to add one day to the current [DateTime](https://hexdocs.pm/elixir/DateTime.html). This creates a new [DateTime](https://hexdocs.pm/elixir/DateTime.html) for tomorrow at the current time.
@@ -247,7 +247,7 @@ DateTime.add(DateTime.utc_now(), day_in_seconds)
 Enter your solution below
 
 ```elixir
-
+ahora |> DateTime.add(1, :day)
 ```
 
 Use [DateTime.compare/2](https://hexdocs.pm/elixir/DateTime.html#compare/2) to compare the [DateTime](https://hexdocs.pm/elixir/DateTime.html) below with the current [DateTime](https://hexdocs.pm/elixir/DateTime.html). The `date` below should be `:lt` (less than) the current [DateTime](https://hexdocs.pm/elixir/DateTime.html).
@@ -265,7 +265,7 @@ DateTime.compare(date, DateTime.utc_now())
 Enter your solution below.
 
 ```elixir
-date = DateTime.new!(~D[2020-01-01], ~T[12:00:00])
+date = DateTime.new!(~D[2020-01-01], ~T[12:00:00]) |> DateTime.diff(ahora, :day)
 ```
 
 Use [DateTime.diff/3](https://hexdocs.pm/elixir/DateTime.html#diff/3) to determine how many seconds are between `2000-01-01` and `2010-01-01`.
@@ -285,7 +285,9 @@ DateTime.diff(finish, start)
 Enter your solution below.
 
 ```elixir
-
+y2k = Date.new!(2000, 1, 1)
+tens = Date.new!(2010, 1, 1)
+Date.diff(tens, y2k)
 ```
 
 ## Timex

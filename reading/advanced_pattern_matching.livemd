@@ -54,7 +54,7 @@ end
 Trigger the `"A"` case. Replace `nil` with your answer.
 
 ```elixir
-case nil do
+case [7, 5, 3] do
   [_, _, 3] -> "A"
   _ -> "default"
 end
@@ -113,9 +113,12 @@ Enter your solution below.
 
 ```elixir
 defmodule Hello do
-  def everyone(list) do
+  def everyone([_, _, _ | _tail]) do
+    "Hey y'all!"
   end
 end
+
+Hello.everyone(["jo", "phil", "bob"])
 ```
 
 ## Pattern Matching in Anonymous Functions
@@ -183,7 +186,12 @@ end)
 </details>
 
 ```elixir
-[{:double, 2}, {:halve, 10}, {:double, 4}]
+mkay = [{:double, 2}, {:halve, 10}, {:double, 4}]
+
+Enum.map(mkay, fn
+  {:double, int} -> int * 2
+  {:halve, int} -> div(int, 2)
+end)
 ```
 
 ## Pattern Matching Vs. If
@@ -209,7 +217,7 @@ end
 Let's say we also need to handle empty messages.
 
 ```elixir
-defmodule Message do
+defmodule Messager do
   def send(user, message) do
     if user.is_admin do
       if message == "" do
@@ -223,7 +231,7 @@ defmodule Message do
   end
 end
 
-Message.send(%{is_admin: true}, "")
+Messager.send(%{is_admin: false}, "dd")
 ```
 
 Nested `if` statements are generally a cue that we should consider an alternative implementation.
@@ -231,7 +239,7 @@ Nested `if` statements are generally a cue that we should consider an alternativ
 Let's see how we could solve this problem with pattern matching.
 
 ```elixir
-defmodule Message do
+defmodule Message1 do
   def send(%{is_admin: true}, "") do
     {:error, :empty_message}
   end
@@ -247,15 +255,15 @@ end
 ```
 
 ```elixir
-Message.send(%{is_admin: true}, "")
+Message1.send(%{is_admin: true}, "")
 ```
 
 ```elixir
-Message.send(%{is_admin: false}, "Error!")
+Message1.send(%{is_admin: false}, "Error!")
 ```
 
 ```elixir
-Message.send(%{is_admin: true}, "Successful!")
+Message1.send(%{is_admin: true}, "Successful!")
 ```
 
 Pattern matching can help reduce the complexity of our control flow.
@@ -345,7 +353,7 @@ actual = {"hello", "hi"}
 expected = {"hello"}
 actual = {"hello", "hi"}
 
-expected = actual
+^expected = actual
 ```
 
 ## Further Reading
