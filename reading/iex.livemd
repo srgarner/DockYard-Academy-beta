@@ -168,7 +168,7 @@ For example, create a `hello.exs` file with your command line. Add the following
 the file with your code editor.
 
 ```elixir
-defmodule Greeting do
+exdefmodule Greeting do
   def hello do
     "Hello, world!"
   end
